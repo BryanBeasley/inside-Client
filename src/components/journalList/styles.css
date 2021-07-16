@@ -1,0 +1,8 @@
+.journal-list {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat( auto-fill, minmax(800px, 1fr));
+}
+
+
+/* !!minmax changes the fill width of note pages */
