@@ -1,14 +1,32 @@
+.textCont {
+    position: relative;
+    width: 300px;
+    margin-right: 50%;
+    right: 500px;
+    color: #ffffff;
+}
+
+.auth-text {
+    color: #ffffff;
+}
+
 .logReg {
     display: flex;
     flex-direction: row;
     text-align: justify;
-    margin-top: 5em;
-    padding-left: 50%;
+    margin-top: 100px;
+    padding-left: 30%;
+    padding-top: 50px;
     letter-spacing: 1px;
 }
 
 .logReg Button {
     align-items: center;
+    margin-top: 100px;
+}
+
+.Register {
+    height: 500px;
 }
 
 .Register Label,
@@ -16,4 +34,10 @@ Input {
     display: flex;
     justify-content: space-evenly, center;
     text-align: center, space-evenly;
+}
+
+.Register Button {
+    margin: 0;
+    padding: 0;
+    bottom: 140px;
 }

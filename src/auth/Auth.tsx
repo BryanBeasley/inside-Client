@@ -2,7 +2,7 @@ import "./styles.css";
 import React from "react";
 import Register from "./Register";
 import Login from "./Login";
-import {Container, Row, Button} from "reactstrap";
+import {Container, Row, Col, Button} from "reactstrap";
 
 type acceptedProps = {
   updateToken: (newToken: string) => void;
@@ -36,6 +36,15 @@ class Auth extends React.Component<acceptedProps, userState> {
   render() {
     return (
       <Container className="logReg">
+        <Row>
+          <Col sm="6" className="textCont">
+            <h1 className="splash-text">Journal INSIDE</h1>
+            <h3 className="splash-text">
+              A simple notes app with habit tracking{" "}
+            </h3>
+            <h3 className="splash-text"> register or sign in now</h3>
+          </Col>
+        </Row>
         <Row>
           <div>
             {this.state.showLogin ? (

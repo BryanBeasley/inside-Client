@@ -43,10 +43,12 @@ class Login extends React.Component<acceptedProps, userState> {
   render() {
     return (
       <div id="Login">
-        <h1>Login</h1>
+        <h1 className="auth-text">Login</h1>
         <Form onSubmit={this.handleSubmit}>
           <FormGroup>
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email" className="auth-text">
+              Email
+            </Label>
             <Input
               onChange={(e: any) => this.setState({email: e.target.value})}
               name="email"
@@ -54,14 +56,18 @@ class Login extends React.Component<acceptedProps, userState> {
             />
           </FormGroup>
           <FormGroup>
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password" className="auth-text">
+              Password
+            </Label>
             <Input
               onChange={(e: any) => this.setState({password: e.target.value})}
               name="password"
               value={this.state.password}
             />
           </FormGroup>
-          <Button type="submit">LOGIN</Button>
+          <Button className="login-btn" type="submit">
+            LOGIN
+          </Button>
         </Form>
       </div>
     );

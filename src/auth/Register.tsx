@@ -115,7 +115,9 @@ class Register extends React.Component<acceptedProps, userState> {
               // name="lastName" value={this.state.lastName}
             />
           </FormGroup>
-          <Button type="submit">Signup</Button>
+          <Button className="sign-btn" type="submit">
+            Signup
+          </Button>
         </Form>
       </div>
     );

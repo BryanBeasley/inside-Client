@@ -1,7 +1,7 @@
 import React from "react";
 import {Switch, Route, Link} from "react-router-dom";
 import HomePage from "../../pages/home";
-
+import Habits from "../../components/habits";
 import {Nav, Button} from "reactstrap";
 
 import "./styles.css";
