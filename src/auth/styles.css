@@ -1,0 +1,19 @@
+.logReg {
+    display: flex;
+    flex-direction: row;
+    text-align: justify;
+    margin-top: 5em;
+    padding-left: 50%;
+    letter-spacing: 1px;
+}
+
+.logReg Button {
+    align-items: center;
+}
+
+.Register Label,
+Input {
+    display: flex;
+    justify-content: space-evenly, center;
+    text-align: center, space-evenly;
+}
