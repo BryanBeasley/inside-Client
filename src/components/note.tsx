@@ -7,6 +7,7 @@ import TextField from "@material-ui/core/TextField";
 type acceptedProps = {
   token: string | null;
   noteId: number | null;
+  notes: {title: string; text: string}[];
   updateNoteId: (newCommentId: number) => void;
 };
 type acceptedState = {
@@ -31,28 +32,29 @@ export default class Note extends React.Component<
     // console.log(props);
   }
 
-  componentDidMount() {
-    this.fetchNotes();
-  }
-  fetchNotes = () => {
-    if (this.props.token) {
-      console.log(this.state.note[0]);
-      fetch(`${APIURL}/notes/collection`, {
-        method: "GET",
-        headers: new Headers({
-          "Content-Type": "application/json",
-          accept: "application/json",
-          Authorization: `${this.props.token}`,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          // this.setState({note: data});
-          console.log(data, data.noteId, "console.log data");
-        })
-        .catch((err) => console.log(err));
-    }
-  };
+  // componentDidMount() {
+  //   this.fetchNotes();
+  // }
+  // fetchNotes = () => {
+  //   if (this.props.token) {
+  //     console.log(this.state.note[0]);
+  //     fetch(`${APIURL}/notes/collection`, {
+  //       method: "GET",
+  //       headers: new Headers({
+  //         "Content-Type": "application/json",
+  //         accept: "application/json",
+  //         Authorization: `${this.props.token}`,
+  //       }),
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log(data);
+
+  //         // console.log(data, data.noteId, "console.log data");
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
+  // };
 
   addNote = (e: any) => {
     e.preventDefault();
@@ -77,8 +79,13 @@ export default class Note extends React.Component<
 
   handleUpdateNote = (e: any) => {
     e.preventDefault();
-    fetch(`${APIURL}/notes/noteUpdate/1`, {
+    fetch(`${APIURL}/notes/noteUpdate/2`, {
       method: "PUT",
+      body: JSON.stringify({
+        title: this.state.title,
+        text: this.state.text,
+        note: this.state.note,
+      }),
       headers: new Headers({
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -95,7 +102,7 @@ export default class Note extends React.Component<
       .catch((err) => console.log(err));
   };
 
-  handleDeleteNote = (noteId: number | null) => {
+  handleDeleteNote = (card: number | null) => {
     if (this.props.token) {
       fetch(`${APIURL}/notes/noteBurn/1`, {
         method: "DELETE",
@@ -115,13 +122,54 @@ export default class Note extends React.Component<
         });
     }
   };
+  cardmapper = () => {
+    return (
+      <Col sm="6">
+        <Card
+          className="note"
+          body
+          inverse
+          style={{
+            backgroundColor: "#0D7377",
+            borderColor: "#EB6E02",
+            color: "#EEEEEE",
+          }}
+        >
+          <TextField
+            autoComplete="off"
+            defaultValue={this.state.title}
+            value={this.state.title}
+            size="small"
+            onChange={(e) => this.setState({title: e.target.value})}
+          />
 
+          <TextField
+            autoComplete="off"
+            defaultValue={this.state.text}
+            value={this.state.text}
+            size="small"
+            onChange={(e) => this.setState({title: e.target.value})}
+          />
+          <CardText className="note-footer">
+            <Button
+              onClick={this.handleUpdateNote}
+              size="small"
+              variant="contained"
+            >
+              Edit
+            </Button>
+            <Button>Delete</Button>
+          </CardText>
+        </Card>
+      </Col>
+    );
+  };
   render() {
     return (
       <div className="notes-list">
         <Row>
           <Col sm="9" className="btt-grp">
-            <Button onClick={this.fetchNotes} type="submit" variant="contained">
+            <Button type="submit" variant="contained">
               Notes
             </Button>
             <Button
@@ -176,6 +224,7 @@ export default class Note extends React.Component<
             </Card>
           </Col>
         </Row>
+        <div>blah</div>
       </div>
     );
   }

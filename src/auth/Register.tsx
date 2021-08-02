@@ -1,7 +1,8 @@
 import React from "react";
 import "./styles.css";
 import APIURL from "../helpers/environment";
-import {Form, FormGroup, Label, Input, Button} from "reactstrap";
+import {Form, FormGroup, Label, Input} from "reactstrap";
+import Button from "@material-ui/core/Button";
 
 type acceptedProps = {
   updateToken: (newToken: string) => void;
@@ -115,7 +116,12 @@ class Register extends React.Component<acceptedProps, userState> {
               // name="lastName" value={this.state.lastName}
             />
           </FormGroup>
-          <Button className="sign-btn" type="submit">
+          <Button
+            variant="contained"
+            color="secondary"
+            className="sign-btn"
+            type="submit"
+          >
             Signup
           </Button>
         </Form>

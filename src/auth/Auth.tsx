@@ -35,50 +35,54 @@ class Auth extends React.Component<acceptedProps, userState> {
 
   render() {
     return (
-      <Container className="logReg">
-        <Row>
-          <Col sm="6" className="textCont">
-            <h1 className="splash-text">Journal INSIDE</h1>
-            <h3 className="splash-text">
-              A simple notes app with habit tracking{" "}
-            </h3>
-            <h3 className="splash-text"> register or sign in now</h3>
-          </Col>
-        </Row>
-        <Row>
-          <div>
-            {this.state.showLogin ? (
-              <div>
-                <Register
-                  updateToken={this.props.updateToken}
-                  updateRole={this.props.updateRole}
-                />
-              </div>
-            ) : (
-              <div>
-                <Login updateToken={this.props.updateToken} />
-              </div>
-            )}
-            <br />
+      <div className="auth-page">
+        <Container className="introText">
+          <Row>
+            <Col sm="6" className="textCont">
+              <h1 className="splash-text">Journal INSIDE</h1>
+              <h3 className="splash-text">
+                A simple notes app with habit tracking{" "}
+              </h3>
+              <h3 className="splash-text"> register or sign in now</h3>
+            </Col>
+          </Row>
+        </Container>
+        <Container className="logReg">
+          <Row className="logArea">
+            <div>
+              {this.state.showLogin ? (
+                <div>
+                  <Register
+                    updateToken={this.props.updateToken}
+                    updateRole={this.props.updateRole}
+                  />
+                </div>
+              ) : (
+                <div>
+                  <Login updateToken={this.props.updateToken} />
+                </div>
+              )}
+              <br />
 
-            <Button
-              style={{
-                position: "relative",
-                left: "50%",
-                top: "75%",
-                marginBottom: "20px",
-                padding: "20px, 50px, 20px",
-              }}
-              variant="contained"
-              onClick={(e) => {
-                this.loginToggle(e);
-              }}
-            >
-              {this.state.showLogin ? "Login" : "Sign up"}
-            </Button>
-          </div>
-        </Row>
-      </Container>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={(e) => {
+                  this.loginToggle(e);
+                }}
+              >
+                {this.state.showLogin ? "Login" : "Sign up"}
+              </Button>
+            </div>
+          </Row>
+        </Container>
+        <div>
+          <h2 className="shineText">
+            {" "}
+            THE BEAUTY OF JOURNALING IS THAT IT CAN BE MESSY
+          </h2>
+        </div>
+      </div>
     );
   }
 }

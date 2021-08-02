@@ -1,43 +1,87 @@
-.textCont {
-    position: relative;
-    width: 300px;
-    margin-right: 50%;
-    right: 500px;
-    color: #ffffff;
+.auth-page {
+    margin: 5px;
+    margin-left: 300px;
+    padding: 0;
+    display: inline-block;
 }
 
-.auth-text {
-    color: #ffffff;
+.introText {
+    display: inline-block;
+    width: 400px;
+    height: 300px;
+    margin: 50px;
+    min-height: 200px;
+    border: 0.5px solid white;
+    border-radius: 10px;
+    color: aliceblue;
+}
+
+.introText h1 {
+    margin-top: 35px;
+    margin-bottom: 65px;
 }
 
 .logReg {
-    display: flex;
-    flex-direction: row;
-    text-align: justify;
-    margin-top: 100px;
-    padding-left: 30%;
-    padding-top: 50px;
-    letter-spacing: 1px;
+    display: inline-block;
+    width: 400px;
+    height: 300px;
+    margin: 50px;
+    min-height: 200px;
+    border: 0.5px solid white;
+    border-radius: 10px;
+    color: aliceblue;
 }
 
-.logReg Button {
-    align-items: center;
-    margin-top: 100px;
+#Login {}
+
+.email {
+    margin: 5px;
 }
 
-.Register {
-    height: 500px;
+#emailLabel {}
+
+#emailInput {
+    float: right;
 }
 
-.Register Label,
-Input {
-    display: flex;
-    justify-content: space-evenly, center;
-    text-align: center, space-evenly;
+.password {
+    margin: 5px;
 }
 
-.Register Button {
-    margin: 0;
-    padding: 0;
-    bottom: 140px;
+#pwLabel {}
+
+#pwInput {
+    float: right;
+}
+
+.shineText {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px 48px;
+    color: #ffffff;
+    background: linear-gradient(to right, #4d4d4d 0, white 10%, #4d4d4d 20%);
+    background-position: 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite linear;
+    animation-fill-mode: forwards;
+    -webkit-text-size-adjust: none;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+@keyframes shine {
+    0% {
+        background-position: 0;
+    }
+    60% {
+        background-position: 300px;
+    }
+    100% {
+        background-position: 450px;
+    }
 }

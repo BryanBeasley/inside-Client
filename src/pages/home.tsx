@@ -3,7 +3,7 @@ import Note from "../components/note";
 import Journal from "../components/journal";
 import {Row, Col} from "reactstrap";
 import Habits from "../components/habits";
-import Quill from "../assets/poetry.svg";
+import APIURL from "../helpers/environment";
 
 // import UpdatePage from "../../components/diary/updatePage";
 
@@ -14,7 +14,8 @@ type acceptedProps = {
   title: string | null;
   text: string | null;
   addPage: any[];
-  note: any[];
+  note: {id: number; title: string; text: string}[];
+  notes: {id: number; title: string; text: string}[];
   updateNoteId: (newNoteId: number) => void;
   updateHabitId: (newHabitId: number) => void;
 };
@@ -23,6 +24,7 @@ type acceptedState = {
   habitId: number;
   title: string;
   text: string;
+  note: any[];
 };
 
 export default class HomePage extends Component<acceptedProps, acceptedState> {
@@ -33,8 +35,29 @@ export default class HomePage extends Component<acceptedProps, acceptedState> {
       habitId: 0,
       title: "",
       text: "",
+      note: [],
     };
   }
+  componentDidMount() {}
+
+  fetchNotes = () => {
+    if (this.props.token) {
+      fetch(`${APIURL}/notes/collection`, {
+        method: "GET",
+        headers: new Headers({
+          "Content-Type": "application/json",
+          accept: "application/json",
+          Authorization: `${this.props.token}`,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          this.setState({note: data.notes[0].id});
+          console.log(this.state.note);
+        })
+        .catch((err) => console.log(err));
+    }
+  };
 
   render() {
     return (
@@ -55,6 +78,7 @@ export default class HomePage extends Component<acceptedProps, acceptedState> {
             <Note
               token={this.props.token}
               noteId={this.props.noteId}
+              notes={this.props.note}
               updateNoteId={this.props.updateNoteId}
             />
           </Col>

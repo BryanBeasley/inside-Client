@@ -1,7 +1,8 @@
 import React from "react";
 import APIURL from "../helpers/environment";
 import "./styles.css";
-import {Form, FormGroup, Label, Input, Button} from "reactstrap";
+import {Form, FormGroup, Label, Input} from "reactstrap";
+import Button from "@material-ui/core/Button";
 
 type acceptedProps = {
   updateToken: any;
@@ -45,27 +46,34 @@ class Login extends React.Component<acceptedProps, userState> {
       <div id="Login">
         <h1 className="auth-text">Login</h1>
         <Form onSubmit={this.handleSubmit}>
-          <FormGroup>
-            <Label htmlFor="email" className="auth-text">
+          <FormGroup className="email">
+            <Label id="emailLabel" htmlFor="email" className="email">
               Email
             </Label>
             <Input
+              id="emailInput"
               onChange={(e: any) => this.setState({email: e.target.value})}
               name="email"
               value={this.state.email}
             />
           </FormGroup>
-          <FormGroup>
-            <Label htmlFor="password" className="auth-text">
+          <FormGroup className="password">
+            <Label htmlFor="password" id="pwLabel">
               Password
             </Label>
             <Input
+              id="pwInput"
               onChange={(e: any) => this.setState({password: e.target.value})}
               name="password"
               value={this.state.password}
             />
           </FormGroup>
-          <Button className="login-btn" type="submit">
+          <Button
+            variant="contained"
+            color="primary"
+            className="login-btn"
+            type="submit"
+          >
             LOGIN
           </Button>
         </Form>

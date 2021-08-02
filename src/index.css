@@ -81,7 +81,7 @@ textarea:focus {
     margin-top: 15px;
     padding: 1rem;
     min-height: 250px;
-    width: 750px;
+    width: 500px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
